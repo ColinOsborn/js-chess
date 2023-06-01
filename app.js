@@ -1,4 +1,4 @@
-const gameboard = document.querySelector("#gameboard");
+const gameBoard = document.querySelector("#gameboard");
 const playerDisplay = document.querySelector("#player");
 const infoDisplay = document.querySelector("#info-display");
 const width = 8
@@ -15,8 +15,16 @@ const startPieces = [
 ]
 
 function createBoard() {
-  startPieces.forEach((startPiece) => {
-    const sqaure = document.createElement('div')
-    sqaure.classList.add('square')
+  startPieces.forEach((startPiece, i) => {
+    const square = document.createElement('div')
+    square.classList.add('square')
+    square.innerHTML = startPiece
+    square.setAttribute('square-id', i)
+    const row = Math.floor( 63 - i / 8 ) + 1
+    if (row % 2 === 0 )
+    // square.classList.add('beige')
+    gameBoard.append(square)
   })
 }
+
+createBoard();
